@@ -11,11 +11,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.groceryapp.GetStarted;
-import com.example.groceryapp.MainActivity;
-import com.example.groceryapp.R;
-import androidx.viewpager.widget.ViewPager;
-
 
 public class NavigationActivity extends AppCompatActivity {
 

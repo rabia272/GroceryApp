@@ -156,7 +156,7 @@ public class SignupTabFragment extends Fragment {
                                     pass.setText("");
                                     cpass.setText("");
 
-                                    startActivity(new Intent(getContext(), MainActivity.class));
+                                    startActivity(new Intent(getContext(), NavDrawer.class));
                                 } else {
                                     Toast.makeText(getContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                                 }
