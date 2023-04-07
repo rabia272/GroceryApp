@@ -25,7 +25,7 @@ public class NavDrawer extends AppCompatActivity {
         binding = ActivityNavDrawerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.appBarNavDrawer.toolbar);
+       // setSupportActionBar(binding.appBarNavDrawer.toolbar);
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
@@ -36,7 +36,7 @@ public class NavDrawer extends AppCompatActivity {
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_nav_drawer);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+       // NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 

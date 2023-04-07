@@ -11,12 +11,7 @@
         android:layout_height="wrap_content"
         android:theme="@style/Theme.GroceryApp.AppBarOverlay">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/green"
-            app:popupTheme="@style/Theme.GroceryApp.PopupOverlay" />
+
 
     </com.google.android.material.appbar.AppBarLayout>
 

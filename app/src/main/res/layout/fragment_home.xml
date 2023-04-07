@@ -11,11 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:text="Hello Rabia"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#0C0C0C"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="210dp"
         android:layout_centerInParent="true"
-        android:layout_marginTop="77dp"
+        android:layout_marginTop="90dp"
         android:clipToPadding="false"
 
         android:overScrollMode="never"
@@ -54,7 +54,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="16dp"
         android:text="Browse by Categories"
         android:textColor="#050505"
         android:textSize="16sp"
@@ -85,7 +85,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:src="@drawable/v2" />
+            android:background="#FAF6F6"
+            android:src="@drawable/v6" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -106,7 +107,7 @@
             android:id="@+id/imageView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/v2" />
+            android:src="@drawable/v3" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -125,10 +126,10 @@
         app:layout_constraintTop_toTopOf="@+id/cardView2">
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/imgfruit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/v6" />
+            android:src="@drawable/v4" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -147,7 +148,7 @@
             android:id="@+id/imageView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/v6" />
+            android:src="@drawable/v1" />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -196,7 +197,7 @@
             android:id="@+id/imageView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/v2" />
+            android:src="@drawable/v5" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -216,7 +217,8 @@
             android:id="@+id/imageView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/v6" />
+            android:src="@drawable/v7"
+            />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -253,7 +255,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="DRINKS"
+        android:text="CANS AND JARS"
         android:textColor="#050505"
         android:textSize="9sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -274,6 +276,21 @@
         app:layout_constraintEnd_toEndOf="@+id/cardView6"
         app:layout_constraintStart_toStartOf="@+id/cardView6"
         app:layout_constraintTop_toBottomOf="@+id/cardView6"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="31dp"
+        android:src="@drawable/hamburger1"
+        app:layout_constraintBottom_toTopOf="@+id/viewpager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
 
