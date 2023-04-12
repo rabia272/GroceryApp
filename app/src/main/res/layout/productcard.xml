@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="180dp"
-    android:layout_margin="10dp"
+    android:layout_margin="9dp"
     android:background="@color/white"
     app:cardCornerRadius="15dp"
     app:cardElevation="5dp">
@@ -16,7 +16,7 @@
         android:background="@color/white">
 
         <ImageView
-            android:id="@+id/img"
+            android:id="@+id/cart_img"
             android:layout_width="180dp"
             android:layout_height="75dp"
             android:layout_marginStart="50dp"
@@ -33,7 +33,7 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="16dp"
             android:fontFamily="sans-serif"
             android:text="Fresh Banana"
             android:textColor="#4CAF50"
@@ -42,15 +42,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img"
+            app:layout_constraintTop_toBottomOf="@+id/cart_img"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/des"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="16dp"
             android:text="Fruit Boulevard"
+            android:textSize="12sp"
             android:textColor="#120F0F"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +64,7 @@
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="16dp"
             android:background="@color/white"
             android:rating="5"
             android:theme="@style/RatingBar"
@@ -76,7 +77,7 @@
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:text="$ 10.00"
             android:textColor="#6E6B6B"
@@ -87,16 +88,16 @@
             app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/addtocart"
             android:layout_width="40dp"
-            android:layout_height="45dp"
+            android:layout_height="40dp"
             android:background="@drawable/cartbutton"
             android:src="@drawable/plus"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img"
+            app:layout_constraintTop_toBottomOf="@+id/cart_img"
 
             app:layout_constraintVertical_bias="1.0" />
 

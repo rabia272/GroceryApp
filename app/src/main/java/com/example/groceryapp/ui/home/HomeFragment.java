@@ -26,7 +26,7 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     ViewPager viewpager;
-    ImageView fruit;
+    ImageView fruit,veg;
 
 
     // Creating Object of ViewPagerAdapter
@@ -48,11 +48,22 @@ public class HomeFragment extends Fragment {
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
                         View.SYSTEM_UI_FLAG_FULLSCREEN);
         fruit= root.findViewById(R.id.imgfruit);
+        veg= root.findViewById(R.id.imgveg);
         fruit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), MainActivity.class);
                 i.putExtra("catid",1);
+
+                startActivity(i);
+
+            }
+        });
+        veg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), MainActivity.class);
+                i.putExtra("catid",4);
 
                 startActivity(i);
 

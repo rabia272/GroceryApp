@@ -127,6 +127,7 @@ public class FragmentLoginTab extends Fragment {
 
                             //storing the user in shared preferences
                             SharedPrefManager.getInstance(getContext()).userLogin(user);
+                            SharedPrefManager.getInstance(getContext()).clearCart();
 
                             //starting the profile activity
                             lem.setText("");
@@ -160,6 +161,7 @@ public class FragmentLoginTab extends Fragment {
                 //params.put("username", username);
                 params.put("email", email);
                 params.put("password", password);
+                //Log.d(TAG, "Email" + email);
                 //params.put("gender", gender);
                 return params;
             }

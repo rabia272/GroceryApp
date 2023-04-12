@@ -7,14 +7,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
         intent = getIntent();
         catid = intent.getIntExtra("catid",0);
-//        Toast.makeText(MainActivity.this, "this is"+catid, Toast.LENGTH_SHORT).show();
         Log.d(TAG, "Hello99 "+catid);
 
         prod = new ArrayList<>();
@@ -64,55 +65,57 @@ public class MainActivity extends AppCompatActivity {
 
     private void getProduct() {
 
-        JsonArrayRequest arrayRequest = new JsonArrayRequest(Request.Method.POST,LinkAPI.URL_GET_PRODUCT,
-                null,new Response.Listener<JSONArray>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, LinkAPI.URL_GET_PRODUCT,
+                new Response.Listener<String>() {
 
                     @Override
-                    public void onResponse(JSONArray response) {
-                   // Toast.makeText(MainActivity.this, "this is"+catid, Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, "HelloLink "+LinkAPI.URL_GET_PRODUCT);
-                        Log.d(TAG, "HelloResponse "+response);
+                    public void onResponse(String response) {
 
-                            //converting response to json object
-                            for (int i = 0; i < response.length(); i++) {
+                        Log.d("HelloResponse", response);
+                        try {
+                            //converting response to json array
+                            JSONArray jsonArray = new JSONArray(response);
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                ProductModel product = new ProductModel();
+                                String name = jsonObject.getString("name");
+                                product.setTitle(name);
+                                double price = jsonObject.getDouble("price");
+                                product.setPrice(price);
+                                String description = jsonObject.getString("des");
+                                product.setDes(description);
+                                String imageUrl = jsonObject.getString("image");
+                                String n = imageUrl;
+                                String path = "http://192.168.10.2/GroceryAppAPI/images/" + n;
+                                product.setImgid(path);
+                                //Log.d("HelloProduct", name + " / " + price + " / " + description + " / " + imageUrl);
+                                prod.add(product);
 
-                                try {
-                                   //Toast.makeText(MainActivity.this, "Hello" , Toast.LENGTH_SHORT).show();
-                                    JSONObject productJson = response.getJSONObject(i);
-
-                                    ProductModel product = new ProductModel();
-                                    product.setTitle(productJson.getString("name"));
-                                    product.setPrice(productJson.getDouble("price"));
-                                    product.setDes(productJson.getString("des"));
-                                    String n = productJson.getString("image");
-                                    String path = "http://192.168.10.2/GroceryAppAPI/images" + n;
-                                    product.setImgid(Integer.parseInt(path));
-                                    //Toast.makeText(MainActivity.this, "this is"+product.getTitle(), Toast.LENGTH_SHORT).show();
-                                    prod.add(product);
-                                    buildRecyclerView();
-                                } catch (JSONException e) {
-                                    //Toast.makeText(MainActivity.this, "Hello"+catid, Toast.LENGTH_SHORT).show();
-                                    e.printStackTrace();
-                                }
                             }
+                            buildRecyclerView();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
                 Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-
             }
-        }) {
-            protected Map<String, String> getParams() {
+        })
+        {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("catid", String.valueOf(catid));
                 return params;
             }
         };
-        VolleySingleton.getInstance(this).addToRequestQueue(arrayRequest);
+        VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
 
     }
 
-    }
+}
 
