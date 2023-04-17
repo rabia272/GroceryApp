@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.RecyclerViewHolder>{
@@ -43,7 +45,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.RecyclerViewHo
         String formattedPrice = "$" + (Double.toString(recyclerData.getPrice()));
         holder.price.setText(formattedPrice);
         double p= recyclerData.getQuantity()* recyclerData.getPrice();
-        String formattedQuanPrice = "$" + (Double.toString(p));
+        String formattedQuanPrice = "$" + (Double.toString(Double.parseDouble(new DecimalFormat("##.###").format(p))));
         holder.quanprice.setText(formattedQuanPrice);
 
         //holder.price.setText(Double.toString(recyclerData.getPrice()));
@@ -58,7 +60,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.RecyclerViewHo
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         ImageView img;
         TextView name,quantity,price,quanprice;
-        ImageButton plus, minus;
+        Button plus, minus;
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.cart_img);

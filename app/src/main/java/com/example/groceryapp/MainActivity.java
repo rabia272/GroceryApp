@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                                 product.setDes(description);
                                 String imageUrl = jsonObject.getString("image");
                                 String n = imageUrl;
-                                String path = "http://192.168.10.2/GroceryAppAPI/images/" + n;
+                                String path = "http://192.168.10.6/GroceryAppAPI/images/" + n;
                                 product.setImgid(path);
                                 //Log.d("HelloProduct", name + " / " + price + " / " + description + " / " + imageUrl);
                                 prod.add(product);
