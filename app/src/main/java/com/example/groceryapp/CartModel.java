@@ -66,4 +66,12 @@ public class CartModel {
         this.price =  price;
 
     }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        CartModel other = (CartModel) obj;
+        return title.equals(other.title);
+    }
+
 }

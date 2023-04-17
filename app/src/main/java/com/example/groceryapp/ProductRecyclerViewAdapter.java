@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecyclerViewAdapter.RecyclerViewHolder>{
@@ -44,7 +45,7 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
         //holder.img.setImageResource(recyclerData.getImgid());
         holder.name.setText(recyclerData.getTitle());
         holder.des.setText(recyclerData.getDes());
-        String formattedPrice = "$" + (Double.toString(recyclerData.getPrice()));
+        String formattedPrice = "$" + (Double.toString(Double.parseDouble(new DecimalFormat("##.###").format(recyclerData.getPrice()))));
         holder.price.setText(formattedPrice);
         //holder.price.setText(Double.toString(recyclerData.getPrice()));
 

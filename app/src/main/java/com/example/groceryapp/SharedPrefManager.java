@@ -85,10 +85,10 @@ public class SharedPrefManager {
         editor.apply();
     }
     public void removeItemFromCart(CartModel cartItem) {
-        List<CartModel> cartItems = getCartItems();
-        cartItems.remove(cartItem);
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+        List<CartModel> cartItems = getCartItems();
+        cartItems.remove(cartItem);
         editor.putString(KEY_CART_ITEMS, gson.toJson(cartItems));
         editor.apply();
     }

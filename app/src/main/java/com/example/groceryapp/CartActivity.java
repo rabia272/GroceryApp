@@ -1,5 +1,6 @@
 package com.example.groceryapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -7,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class CartActivity extends AppCompatActivity {
@@ -29,7 +31,7 @@ public class CartActivity extends AppCompatActivity {
         cart.add(new CartModel("Grapes",R.drawable.orange,2,10.70,45.87));*/
         // added data from arraylist to adapter class.
 
-       CartAdapter adapter=new CartAdapter(cart,CartActivity.this);
+       CartAdapter adapter=new CartAdapter(cart,CartActivity.this,this);
 
       LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         recyclerView.setHasFixedSize(true);
@@ -41,9 +43,11 @@ public class CartActivity extends AppCompatActivity {
             CartModel cartItem = cart.get(i);
             totalPrice=totalPrice+(cartItem.getPrice()*cartItem.getQuantity());
         }
-        String formattedPrice = "$" + (Double.toString(totalPrice));
+        String formattedPrice = "$" + (Double.toString(Double.parseDouble(new DecimalFormat("##.###").format(totalPrice))));
+
         total.setText(formattedPrice);
 
 
     }
+
 }
