@@ -36,61 +36,47 @@ public class Checkout extends AppCompatActivity implements OnMapReadyCallback {
             mapFragment.getMapAsync(this);
 
             ConstraintLayout constraintLayout = findViewById(R.id.cartitemslayout);
-            TextView previousTextView1 = new TextView(this);
+            TextView previousTextView = new TextView(this);
            cart = (ArrayList<CartModel>) getIntent().getSerializableExtra("array_list_key");
             for (int i = 0; i < cart.size(); i++) {
                 CartModel cartItem = cart.get(i);
-
                 TextView textView1 = new TextView(this);
-                textView1.setId(View.generateViewId());
-                textView1.setText(cartItem.getQuantity()+"x "+cartItem.getTitle());
+                textView1.setId(View.generateViewId()); // set a unique id for each TextView
+                textView1.setText(cartItem.getQuantity() + "x " + cartItem.getTitle());
                 textView1.setTextColor(getResources().getColor(R.color.black));
                 textView1.setTextSize(14);
-                textView1.setPadding(5,0,5,0);
-                constraintLayout.addView(textView1);
-
+                textView1.setPadding(5, 0, 5, 0);
                 TextView textView2 = new TextView(this);
-                textView2.setId(View.generateViewId());
-                textView2.setText("Rs."+cartItem.getQuantity()*cartItem.getPrice());
+                textView2.setText("Rs." + cartItem.getQuantity() * cartItem.getPrice());
                 textView2.setTextColor(getResources().getColor(R.color.black));
-                textView2.setPadding(0,0,0,0);
-                constraintLayout.addView(textView2);
+                textView2.setPadding(0, 0, 0, 0);
 
-
-                ConstraintSet constraints = new ConstraintSet();
-                constraints.clone(constraintLayout);
-
-                if (i == 1) {
-                    constraints.connect(textView1.getId(), ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP);
+                // Set layout parameters for the TextViews
+                ConstraintLayout.LayoutParams layoutParams1 = new ConstraintLayout.LayoutParams(
+                        ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
+                if (i == 0) {
+                    layoutParams1.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
                 } else {
-                    constraints.connect(textView1.getId(), ConstraintSet.TOP, previousTextView1.getId(), ConstraintSet.BOTTOM);
+                    layoutParams1.topToBottom = previousTextView.getId();
                 }
-                constraints.connect(textView1.getId(), ConstraintSet.START, previousTextView1 != null ? previousTextView1.getId() : ConstraintSet.PARENT_ID, previousTextView1 != null ? ConstraintSet.END : ConstraintSet.END);
-                constraints.connect(textView2.getId(), ConstraintSet.START, textView1.getId(), ConstraintSet.END);
-                constraints.connect(textView2.getId(), ConstraintSet.TOP, textView1.getId(), ConstraintSet.TOP);
-                constraints.applyTo(constraintLayout);
+                layoutParams1.startToStart = ConstraintLayout.LayoutParams.PARENT_ID;
+                layoutParams1.setMargins(67, 4, 10, 10);
 
+                ConstraintLayout.LayoutParams layoutParams2 = new ConstraintLayout.LayoutParams(
+                        ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
+                if (i == 0) {
+                    layoutParams2.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
+                } else {
+                    layoutParams2.topToBottom = previousTextView.getId();
+                }
+                layoutParams2.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID;
+                layoutParams2.setMargins(0, 4, 50, 10);
 
-//                constraints.connect(textView1.getId(), ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START, dpToPx(context, 20));
-//                constraints.connect(textView1.getId(), ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, 0);
-//                constraints.connect(textView1.getId(), ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 0);
-//                constraints.connect(textView2.getId(), ConstraintSet.START, textView1.getId(), ConstraintSet.END, dpToPx(context, 8));
-//                constraints.connect(textView2.getId(), ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, 0);
-//                constraints.connect(textView2.getId(), ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 0);
-//                constraints.setHorizontalBias(textView2.getId(), 0.92f);
-//                constraints.applyTo(constraintLayout);
-
-
-//                constraints.connect(textView1.getId(), ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START);
-//                constraints.connect(textView1.getId(), ConstraintSet.TOP, i == 1 ? ConstraintSet.PARENT_ID : textView2.getId(), ConstraintSet.BOTTOM);
-//                constraints.connect(textView2.getId(), ConstraintSet.START, textView1.getId(), ConstraintSet.END);
-//                constraints.connect(textView2.getId(), ConstraintSet.TOP, textView1.getId(), ConstraintSet.TOP);
-//                constraints.connect(textView2.getId(), ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END);
-
-
-                previousTextView1 = textView1;
+                // Add the TextViews to the ConstraintLayout
+                constraintLayout.addView(textView1, layoutParams1);
+                constraintLayout.addView(textView2, layoutParams2);
+                previousTextView = textView1;
             }
-
 
         }
 
@@ -113,3 +99,6 @@ public class Checkout extends AppCompatActivity implements OnMapReadyCallback {
             // Add your code here to process the order
         }
     }
+
+
+
