@@ -1,6 +1,8 @@
 package com.example.groceryapp;
 
-public class CartModel {
+import java.io.Serializable;
+
+public class CartModel implements Serializable {
     private String title;
     private String imgid;
     private int quantity;
@@ -48,9 +50,7 @@ public class CartModel {
         return quan_per_price;
     }
 
-    public void setquanPrice(double price) {
-        this.quan_per_price = quan_per_price;
-    }
+
     public CartModel(){}
     public CartModel(String title, String imgid, int quantity, double price, double quan_per_price) {
         this.title = title;
@@ -65,6 +65,12 @@ public class CartModel {
         this.quantity   =  quantity;
         this.price =  price;
 
+    }
+    public CartModel(String title, int quantity, double price, double quan_per_price) {
+        this.title = title;
+        this.quantity   =  quantity;
+        this.price =  price;
+        this.quan_per_price= quan_per_price;
     }
     @Override
     public boolean equals(Object obj) {

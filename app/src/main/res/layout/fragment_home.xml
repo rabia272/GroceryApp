@@ -90,7 +90,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
+        android:id="@+id/cardViewOrder"
         android:layout_width="80dp"
         android:layout_height="90dp"
         android:background="@color/pink"
@@ -119,11 +119,11 @@
         android:layout_marginStart="30dp"
         app:cardCornerRadius="12dp"
         android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+        app:layout_constraintBottom_toBottomOf="@+id/cardViewOrder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cardView2"
-        app:layout_constraintTop_toTopOf="@+id/cardView2">
+        app:layout_constraintStart_toEndOf="@+id/cardViewOrder"
+        app:layout_constraintTop_toTopOf="@+id/cardViewOrder">
 
         <ImageView
             android:id="@+id/imgfruit"
@@ -188,8 +188,8 @@
         android:backgroundTint="#F6F0F0"
         app:cardCornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="@+id/cardView3"
-        app:layout_constraintEnd_toEndOf="@+id/cardView2"
-        app:layout_constraintStart_toStartOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="@+id/cardViewOrder"
+        app:layout_constraintStart_toStartOf="@+id/cardViewOrder"
         app:layout_constraintTop_toTopOf="@+id/cardView3"
         app:layout_constraintVertical_bias="0.0">
 
@@ -231,9 +231,9 @@
         android:textColor="#050505"
         android:textSize="9sp"
         app:layout_constraintBottom_toTopOf="@+id/cardView5"
-        app:layout_constraintEnd_toEndOf="@+id/cardView2"
-        app:layout_constraintStart_toStartOf="@+id/cardView2"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="@+id/cardViewOrder"
+        app:layout_constraintStart_toStartOf="@+id/cardViewOrder"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewOrder"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView

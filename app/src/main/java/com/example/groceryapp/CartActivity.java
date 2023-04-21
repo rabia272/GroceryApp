@@ -2,6 +2,8 @@ package com.example.groceryapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,7 @@ public class CartActivity extends AppCompatActivity {
     private ArrayList<CartModel> cart;
     TextView total;
     double totalPrice=0.0;
+    Button checkout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +26,7 @@ public class CartActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.cartitems);
         cart = new ArrayList<>();
         total=findViewById(R.id.carttotal);
+       checkout=findViewById(R.id.checkout_button);
         cart= (ArrayList<CartModel>) SharedPrefManager.getInstance(this.getApplicationContext()).getCartItems();
 
         /*cart.add(new CartModel("Grapes",R.drawable.pomegranate,2,40.80,120));
@@ -46,6 +50,15 @@ public class CartActivity extends AppCompatActivity {
         String formattedPrice = "$" + (Double.toString(Double.parseDouble(new DecimalFormat("##.###").format(totalPrice))));
 
         total.setText(formattedPrice);
+        checkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Checkout.class);
+                intent.putExtra("array_list_key", cart);
+                startActivity(intent);
+
+            }
+        });
 
 
     }
