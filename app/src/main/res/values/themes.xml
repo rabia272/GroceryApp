@@ -18,14 +18,21 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="RatingBar" parent="Theme.AppCompat">
         <item name="colorControlNormal">@color/lightGrey</item>
         <item name="colorControlActivated">@color/duskYellow</item>
     </style>
+
     <style name="Theme.GroceryApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.GroceryApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <color name="duskYellow">#F7DF0F</color>
     <color name="lightGrey">#BEBAB9</color>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.GroceryApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
 </resources>

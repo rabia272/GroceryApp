@@ -1,15 +1,22 @@
 package com.example.groceryapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.core.content.ContextCompat;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.groceryapp.ui.PaymentMode;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -17,6 +24,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 
@@ -24,8 +32,14 @@ public class Checkout extends AppCompatActivity implements OnMapReadyCallback {
 
         private GoogleMap mMap;
         ArrayList<CartModel>  cart=new ArrayList<>();
+    double subtotal=0.0;
+    TextView subTotal;
+    TextView Total;
+    TextView cash;
+    TextView paytextView;
 
-        @Override
+
+    @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_checkout);
@@ -34,6 +48,10 @@ public class Checkout extends AppCompatActivity implements OnMapReadyCallback {
             SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.map);
             mapFragment.getMapAsync(this);
+            subTotal=findViewById(R.id.subtotal);
+            Total=findViewById(R.id.finaltotal);
+             cash=findViewById(R.id.cashtxtview);
+            paytextView = findViewById(R.id.paytextView);
 
             ConstraintLayout constraintLayout = findViewById(R.id.cartitemslayout);
             TextView previousTextView = new TextView(this);
@@ -78,7 +96,73 @@ public class Checkout extends AppCompatActivity implements OnMapReadyCallback {
                 previousTextView = textView1;
             }
 
-        }
+            for (int i = 0; i < cart.size(); i++) {
+                CartModel cartItem = cart.get(i);
+                subtotal=subtotal+(cartItem.getPrice()*cartItem.getQuantity());
+            }
+            String formattedPrice = "Rs." + (Double.toString(Double.parseDouble(new DecimalFormat("##.###").format(subtotal))));
+
+            subTotal.setText(formattedPrice);
+        String formattedTotalPrice = "Rs." + (Double.toString(Double.parseDouble(new DecimalFormat("##.###").format(subtotal+200))));
+            Total.setText(formattedTotalPrice);
+            cash.setText(formattedTotalPrice);
+
+
+
+
+        Drawable icon = ContextCompat.getDrawable(this, R.drawable.baseline_edit_location);
+        paytextView.setCompoundDrawablesWithIntrinsicBounds(null, null, icon, null);
+        paytextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Not interested in clicks on the TextView itself
+            }
+        });
+
+        icon.setCallback(new Drawable.Callback() {
+            @Override
+            public void invalidateDrawable(@NonNull Drawable who) {
+                paytextView.invalidate();
+            }
+
+            @Override
+            public void scheduleDrawable(@NonNull Drawable who, @NonNull Runnable what, long when) {
+                paytextView.postDelayed(what, when - System.currentTimeMillis());
+            }
+
+            @Override
+            public void unscheduleDrawable(@NonNull Drawable who, @NonNull Runnable what) {
+                paytextView.removeCallbacks(what);
+            }
+        });
+
+        icon.setBounds(0, 0, icon.getIntrinsicWidth(), icon.getIntrinsicHeight());
+        paytextView.setCompoundDrawables(null, null, icon, null);
+
+        paytextView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    if (event.getRawX() >= paytextView.getRight() - icon.getBounds().width()) {
+                        // Click was on the icon
+                        Intent intent = new Intent(getApplicationContext(), PaymentMode.class);
+                        startActivity(intent);
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
+
+
+
+
+
+
+
+
+    }
 
         @Override
         public void onMapReady(GoogleMap googleMap) {

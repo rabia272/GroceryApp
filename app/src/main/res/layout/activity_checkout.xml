@@ -168,7 +168,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/totPrice"
+                android:id="@+id/cashtxtview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -233,6 +233,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
                 android:padding="5dp"
                 android:text="Subtotal"
                 android:textColor="@color/black"
@@ -294,10 +295,12 @@
                 android:id="@+id/cartitemslayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ordersummary">
+                app:layout_constraintTop_toBottomOf="@+id/ordersummary"
+                app:layout_constraintVertical_bias="0.0">
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -312,7 +315,7 @@
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="#4CAF50"
@@ -350,11 +353,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="20dp"
         android:text="Rs. 7800"
+        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
