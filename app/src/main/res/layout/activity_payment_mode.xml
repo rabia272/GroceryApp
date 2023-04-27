@@ -4,6 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.PaymentMode">
+    android:background="@color/white"
+    tools:context=".PaymentMode">
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="4dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <RadioButton
+            android:id="@+id/easypaisa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@null"
+            android:button="@null"
+            android:buttonTint="#00DD4A"
+            android:drawableLeft="@drawable/x"
+            android:drawableRight="@android:drawable/btn_radio"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="Easy Paisa"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:onClick="paymentPerform"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/cash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@null"
+            android:button="@null"
+            android:buttonTint="#00DD4A"
+            android:drawableLeft="@drawable/baseline_cash24"
+            android:drawableRight="@android:drawable/btn_radio"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="Cash"
+            android:checked="true"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:onClick="paymentPerform"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/credit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@null"
+            android:button="@null"
+            android:buttonTint="#00DD4A"
+            android:drawableLeft="@drawable/baseline_credit_card_24"
+            android:drawableRight="@android:drawable/btn_radio"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="Credit or Debit Card"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:onClick="paymentPerform"
+            android:textStyle="bold" />
+
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
